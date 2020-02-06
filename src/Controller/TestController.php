@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 class TestController
 {
      /**
-     * @Route("/lucky/number")
+     * @Route("/lucky/bullshit")
       */
     public function number()
     {
