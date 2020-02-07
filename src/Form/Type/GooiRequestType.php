@@ -7,12 +7,13 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\GooiRequest;
 use SebastianBergmann\CodeCoverage\Report\Text;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class GooiRequestType extends AbstractType
 {
@@ -22,14 +23,14 @@ class GooiRequestType extends AbstractType
         //We starten een formulier en voegen allerlei velden toe:
         $builder
         ->add('Naam',TextType::class,)
-        ->add('IBAN',TextType::class)
+        ->add('IBAN',TextType::class,['label'=>'IBAN'])
         ->add('EmailAdres',EmailType::class)
         ->add('TotaalBedrag',MoneyType::class)
         ->add('kostenpost',TextType::class)
         ->add('Activiteit',TextType::class)
-        //->add('Comissie',ChoiceType::class,['choices'=>['Activiteiten Comissie' => 'Aco','Bestuur'=>'Bestuur','Anders, leg uit in opmerkingen'=>'anders'],])
-        //->add('Bonnetje',FileType::class)
-        ->add('Opmerkingen',TextType::class)
+        ->add('Comissie',ChoiceType::class,['choices'=>['Activiteiten Comissie' => 'Aco','Bestuur'=>'Bestuur','Anders, leg uit in opmerkingen'=>'anders'],])
+        ->add('Bon',FileType::class,['label'=>'Bonnetje'])
+        ->add('Opmerkingen',TextareaType::class,['required'=>false])
         ->add('EerlijkIngevuld',CheckboxType::class,['label'=>'Alles gecontroleerd en naar waarheid ingevuld']) //Dit is trouwens hoe je de text VOOR het invulveld op iets anders kan zetten dan de naam van de variable
         ->add('Insturen',SubmitType::class)//Zo maak je een knop om het formulier inleverbaar te maken
         ;
