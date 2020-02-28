@@ -9,14 +9,14 @@ class GooiRequest
     protected $IBAN;
     protected $EmailAdres;
     protected $TotaalBedrag;
-    protected $Kostenpost;
+    protected $Producten;
     protected $Activiteit;
     protected $Comissie;
     protected $Bon;
     protected $Opmerkingen;
     protected $EerlijkIngevuld;
 
-    //Deze variablen moetten wel veregen en geschreven kunnen worden, dus daar moet je deze standaart 'set/get' functies voor maken:
+    //Deze variablen moetten wel verkregen en geschreven kunnen worden, dus daar moet je deze standaart 'set/get' functies voor maken:
     //Het formulier kan die namenlijk automatisch vinden en gebruiken om de ingeleverde informatie naar te schrijven.
     public function getNaam()
     {
@@ -58,14 +58,14 @@ class GooiRequest
         $this->TotaalBedrag = $TotaalBedrag;
     }
 
-    public function getKostenpost()
+    public function getProducten()
     {
-        return $this->Kostenpost;
+        return $this->Producten;
     }
 
-    public function setKostenpost($Kostenpost)
+    public function setProducten($Producten)
     {
-        $this->Kostenpost = $Kostenpost;
+        $this->Producten = $Producten;
     }
 
     public function getActiviteit()
