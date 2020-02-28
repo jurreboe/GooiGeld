@@ -24,9 +24,10 @@ class GooiMailHanlder extends AbstractController
         $now = (new DateTime())->format('d/m/Y');
         $message = (new \Swift_Message('GooiGeld verzoek '. $naam .' op '. $now))
             ->setFrom($gooiRequest->getEmailAdres())
-            ->setTo($this->GetComissieEmail($gooiRequest->getComissie()))
+            ->setTo($this->emailbook->getBoek()[$gooiRequest->getComissie()])
+            ->attach(\Swift_Attachment::fromPath($gooiRequest->getBon()->getPath()))
             ->setBody($this->renderView('emails/GooiGeldRequestEmailTemplate.html.twig',[
-                'ontvanger'=>$this->emailbook->getBoek()[$gooiRequest->getComissie()],
+                'ontvanger'=>$gooiRequest->getComissie(),
                 'naam'=>$naam,
                 'kostenpost'=>$gooiRequest->getProducten(),
                 'activiteit'=>$gooiRequest->getActiviteit(),
@@ -34,20 +35,11 @@ class GooiMailHanlder extends AbstractController
                 'IBAN'=>$gooiRequest->getIBAN(),
                 'datum'=>$now,
                 'emailadres'=>$gooiRequest->getEmailAdres()]),
-                'text/html');        
-        $message->setFrom($gooiRequest->getEmailAdres());
-        $message->setTo('Comissie@viakunst.nl');
+                'text/html');  
         $this->message = $message;
 
         $this->mailer->send($this->message);
         $this->emailSent = true;
         
-    }
-
-    protected function GetComissieEmail(string $comissienaam)
-    {
-        //TODO: retrieve email van de appropriate comissie
-        return "comissie@viakunst.nl";
-
     }
 }

@@ -1,6 +1,8 @@
 <?php
 namespace App\Entity;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 class GooiRequest
 {
     //Dit is de class die de informatie vasthoudt, zie het als een soort tijdelijke mini database
@@ -88,7 +90,7 @@ class GooiRequest
         $this->Comissie = $Comissie;
     }
 
-    public function getBon()
+    public function getBon(): ?UploadedFile
     {
         return $this->Bon;
     }

@@ -68,7 +68,7 @@ class GooiRequestType extends AbstractType
             ]
         ])
         ->add('Comissie',ChoiceType::class,[
-            'choices'=>['Bestuur'=>'Bestuur','Activiteiten Comissie' => 'Aco','Anders, leg uit in opmerkingen'=>'anders'], 
+            'choices'=>$this->emailBook->opties(), 
             'label' => 'Van wie krijg je geld? *', 
             ])
         ->add('Bon',FileType::class,['label'=>'Bonnetje * '])
