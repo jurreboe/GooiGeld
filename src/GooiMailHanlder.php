@@ -9,12 +9,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class GooiMailHanlder extends AbstractController
 {
     private $mailer;
-    private $book;
+    private $emailbook;
 
     function __construct( \Swift_Mailer $mailer, EmailBook $emailBook)
     {
         $this->mailer = $mailer;
-        $this->book = $emailBook->getBoek();
+        $this->emailbook = $emailBook;
     }
 
     public function send(GooiRequest $gooiRequest)
@@ -26,9 +26,9 @@ class GooiMailHanlder extends AbstractController
             ->setFrom($gooiRequest->getEmailAdres())
             ->setTo($this->GetComissieEmail($gooiRequest->getComissie()))
             ->setBody($this->renderView('emails/GooiGeldRequestEmailTemplate.html.twig',[
-                'ontvanger'=>$this->book[$gooiRequest->getComissie()],
+                'ontvanger'=>$this->emailbook->getBoek()[$gooiRequest->getComissie()],
                 'naam'=>$naam,
-                'kostenpost'=>$gooiRequest->getKostenpost(),
+                'kostenpost'=>$gooiRequest->getProducten(),
                 'activiteit'=>$gooiRequest->getActiviteit(),
                 'totaalbedrag'=>$gooiRequest->getTotaalBedrag(),
                 'IBAN'=>$gooiRequest->getIBAN(),

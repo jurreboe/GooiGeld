@@ -19,7 +19,13 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class GooiRequestType extends AbstractType
 {
-    public function buildForm(\Symfony\Component\Form\FormBuilderInterface $builder, array $options, EmailBook $emailBook)
+    private $emailBook;
+
+    public function __construct(EmailBook $emailBook)
+    {
+        $this->emailBook = $emailBook;
+    }
+    public function buildForm(\Symfony\Component\Form\FormBuilderInterface $builder, array $options)
     {
         //Hier wordt het daadwerkelijke formulier gemaakt:
         //We starten een formulier en voegen allerlei velden toe:
