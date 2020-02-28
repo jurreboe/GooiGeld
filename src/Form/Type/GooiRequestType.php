@@ -23,7 +23,12 @@ class GooiRequestType extends AbstractType
         //We starten een formulier en voegen allerlei velden toe:
         $builder
         ->add('Naam',TextType::class,)
-        ->add('IBAN',TextType::class,['label'=>'IBAN'])
+        ->add('IBAN',TextType::class,[
+            'label'=>'IBAN',
+            'attr' => [
+                'placeholder' => 'NLxx xxxx xxxx xxxx xx'
+            ]
+        ])
         ->add('EmailAdres',EmailType::class)
         ->add('TotaalBedrag',MoneyType::class)
         ->add('kostenpost',TextType::class)
