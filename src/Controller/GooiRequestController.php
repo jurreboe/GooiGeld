@@ -1,14 +1,12 @@
 <?php
 namespace App\Controller;
 
+use App\EmailBook;
 use App\Entity\GooiRequest;
 use App\GooiMailHanlder;
 use App\Form\Type\GooiRequestType;
-use Swift_SmtpTransport;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use symfony\component\routing\annotation\route;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 

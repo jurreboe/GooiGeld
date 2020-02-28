@@ -1,6 +1,7 @@
 <?php
 namespace App\Form\Type;
 
+use App\EmailBook;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -17,7 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class GooiRequestType extends AbstractType
 {
-    public function buildForm(\Symfony\Component\Form\FormBuilderInterface $builder, array $options)
+    public function buildForm(\Symfony\Component\Form\FormBuilderInterface $builder, array $options, EmailBook $emailBook)
     {
         //Hier wordt het daadwerkelijke formulier gemaakt:
         //We starten een formulier en voegen allerlei velden toe:

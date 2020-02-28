@@ -8,14 +8,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GooiMailHanlder extends AbstractController
 {
-    function __construct( \Swift_Mailer $mailer)
+    private $mailer;
+    private $book;
+
+    function __construct( \Swift_Mailer $mailer, EmailBook $emailBook)
     {
         $this->mailer = $mailer;
+        $this->book = $emailBook->getBoek();
     }
 
     public function send(GooiRequest $gooiRequest)
     {
-        //TODO:Schrijf hier de e-mail op basis van de nieuwe gooirequest, en sla het op in de email file
         //Haal relevante informatie uit gooirequest met $gooirequest->getNaam() achtige functies (zie gooirequest class)
         $naam = $gooiRequest->getNaam();
         $now = (new DateTime())->format('d/m/Y');
@@ -23,6 +26,7 @@ class GooiMailHanlder extends AbstractController
             ->setFrom($gooiRequest->getEmailAdres())
             ->setTo($this->GetComissieEmail($gooiRequest->getComissie()))
             ->setBody($this->renderView('emails/GooiGeldRequestEmailTemplate.html.twig',[
+                'ontvanger'=>$this->book[$gooiRequest->getComissie()],
                 'naam'=>$naam,
                 'kostenpost'=>$gooiRequest->getKostenpost(),
                 'activiteit'=>$gooiRequest->getActiviteit(),
@@ -42,7 +46,7 @@ class GooiMailHanlder extends AbstractController
 
     protected function GetComissieEmail(string $comissienaam)
     {
-        //TODO: vindt het relevante email adres bij de comissie
+        //TODO: retrieve email van de appropriate comissie
         return "comissie@viakunst.nl";
 
     }
