@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\EmailBook;
@@ -6,16 +7,15 @@ use App\Entity\GooiRequest;
 use App\GooiMailHanlder;
 use App\Form\Type\GooiRequestType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use symfony\component\routing\annotation\route;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-
 
 class GooiRequestController extends AbstractController
 {
     
-       /**
-        *@Route("/GooiGeld")
-        */
+    /**
+    * @Route("/GooiGeld")
+    */
     public function new(Request $request, GooiMailHanlder $mailHandler)
     {
         //Dit is de controller, die handlet alle praktische zaken, zo maakt hij een nieuw data object op basis van de class 'GooiRequest'
