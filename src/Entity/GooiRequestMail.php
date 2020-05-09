@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class GooiRequestMail extends AbstractController
 {
-    private $email; //Holds the email file we are goint to send
+    private $email; //Holds the email file we are going to send
     private $gooiRequest;
     private $message;
     private $mailer;
@@ -25,7 +25,7 @@ class GooiRequestMail extends AbstractController
         $message = new \Swift_Message('test 1');
         $message->setFrom('pipo@declown.com');
         $message->setTo('Comissie@viakunst.nl');
-        $message->setBody('Wat teks');
+        $message->setBody('Wat tekst');
         //$message = (new \Swift_Message('GooiGeld verzoek '+ $naam +' op '+ $now))
         //    ->setFrom($gooiRequest->getEmailAdres())
         //    ->setTo($this->GetComissieEmail($gooiRequest->getComissie())

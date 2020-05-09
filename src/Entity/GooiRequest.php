@@ -2,6 +2,8 @@
 namespace App\Entity;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class GooiRequest
 {
@@ -17,6 +19,15 @@ class GooiRequest
     protected $Bon;
     protected $Opmerkingen;
     protected $EerlijkIngevuld;
+
+     /**
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     mimeTypes = {"application/pdf", "application/x-pdf", "image/png", "video/JPEG"},
+     *     mimeTypesMessage = "Please upload a valid PDF, PNG or JPG file."
+     * )
+     */ 
+    protected $BonFile;
 
     //Deze variablen moetten wel verkregen en geschreven kunnen worden, dus daar moet je deze standaart 'set/get' functies voor maken:
     //Het formulier kan die namenlijk automatisch vinden en gebruiken om de ingeleverde informatie naar te schrijven.
@@ -118,5 +129,15 @@ class GooiRequest
     public function setEerlijkIngevuld($EerlijkIngevuld)
     {
         $this->EerlijkIngevuld = $EerlijkIngevuld;
+    }
+
+    public function setBonFile(File $file = null)
+    {
+        $this->BonFile = $file;
+    }
+
+    public function getBonFile()
+    {
+        return $this->BonFile;
     }
 }

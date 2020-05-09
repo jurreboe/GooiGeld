@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class succesController
 {
      /**
-     * @Route("/succes!")
+     * @Route("/Succes!")
       */
     public function new()
     {

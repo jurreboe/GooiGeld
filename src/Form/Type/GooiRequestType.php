@@ -71,7 +71,9 @@ class GooiRequestType extends AbstractType
             'choices'=>$this->emailBook->opties(), 
             'label' => 'Van wie krijg je geld? *', 
             ])
-        ->add('Bon',FileType::class,['label'=>'Bonnetje * '])
+        ->add('BonFile',FileType::class,[
+            'label'=>'Bonnetje * '
+            ])
         ->add('Opmerkingen',TextareaType::class,['required'=>false, 
             'label' => 'Opmerking? ' ,
             'attr'  => [
@@ -81,7 +83,6 @@ class GooiRequestType extends AbstractType
         ->add('EerlijkIngevuld',CheckboxType::class,[
             'label'=>'Alles gecontroleerd en naar waarheid ingevuld? * '
             ]) //Dit is trouwens hoe je de text VOOR het invulveld op iets anders kan zetten dan de naam van de variable
-        ->add('Insturen ',SubmitType::class)//Zo maak je een knop om het formulier inleverbaar te maken
         ;
     }
 

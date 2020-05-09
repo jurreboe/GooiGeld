@@ -3,7 +3,7 @@ namespace App;
 
 class EmailBook 
 {
-    private $boek = ['bestuur'=> 'penningmeester@viakunst-utrecht.nl', 'aCo' => 'activiteitencomissie@viakunst-utrecht.nl'];
+    private $boek = ['bestuur'=> 'jurreboellen@gmail.com', 'aCo' => 'activiteitencomissie@viakunst-utrecht.nl'];
     public function getBoek()
     {
         return $this->boek;

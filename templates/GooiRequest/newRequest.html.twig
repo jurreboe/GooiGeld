@@ -1,1 +1,14 @@
-<body>{{form(form)}}</body>
+{% extends 'layout.html.twig' %}
+
+{% if page_title is not defined %}
+    {% set page_title = 'Gooigeld' %}
+{% endif %}
+
+{% block body %}
+    <div class="form">
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button type="submit">Sturen</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

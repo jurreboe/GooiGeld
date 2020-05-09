@@ -37,6 +37,10 @@ class GooiRequestController extends AbstractController
             //Zou bijvoorbeeld leuk zijn met een rederect naar website/succes!
             //daar heb ik al een controller voor gemaakt maar rederecten naar een andere pagina lukt me nog niet :)
         }
+        else
+        {
+            //TODO: Aangeven wat er mis is gegaan. E.g. Geen foto, verkeerde formaat, onbekend persoon, enz.
+        }
         
         //Nu ons formulier gemaakt is, geven we het door aan twig (templates/GooiRequest/newRequest.html.twig) om gerendert te worden, zodat de computer weet wat hij moet laten zien
         return $this->render('GooiRequest/newRequest.html.twig',['form'=>$form->createView(),]);

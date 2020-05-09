@@ -25,7 +25,7 @@ class GooiMailHanlder extends AbstractController
         $message = (new \Swift_Message('GooiGeld verzoek '. $naam .' op '. $now))
             ->setFrom($gooiRequest->getEmailAdres())
             ->setTo($this->emailbook->getBoek()[$gooiRequest->getComissie()])
-            ->attach(\Swift_Attachment::fromPath($gooiRequest->getBon()->getPath()))
+            ->attach(\Swift_Attachment::fromPath($gooiRequest->getBonFile()->getPath()))
             ->setBody($this->renderView('emails/GooiGeldRequestEmailTemplate.html.twig',[
                 'ontvanger'=>$gooiRequest->getComissie(),
                 'naam'=>$naam,
