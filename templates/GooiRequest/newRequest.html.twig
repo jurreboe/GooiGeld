@@ -5,10 +5,17 @@
 {% endif %}
 
 {% block body %}
-    <div class="form">
-        {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <button type="submit">Sturen</button>
-        {{ form_end(form) }}
+
+    <div class="background-block">
+        <div class="panel-heading">
+            <h3 class="panel-title">DigiDecs—digitaal declareren bij ViaKunst</h3>
+        </div>
+
+        <div class="form">
+            {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button type="submit">Sturen</button>
+            {{ form_end(form) }}
+        </div>
     </div>
 {% endblock %}
